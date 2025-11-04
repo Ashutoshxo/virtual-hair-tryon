@@ -5,6 +5,8 @@ const HairstyleGallery = ({ length, onSelect, selectedHairstyle }) => {
   const [hairstyles, setHairstyles] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
   useEffect(() => {
     if (length) {
       fetchHairstyles();
@@ -17,7 +19,12 @@ const HairstyleGallery = ({ length, onSelect, selectedHairstyle }) => {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/hairstyles?length=${length}`
       );
-      setHairstyles(response.data.data);
+     
+      const updatedHairstyles = response.data.data.map(style => ({
+        ...style,
+        image_url: `${API_URL}${style.image_url.startsWith('/') ? '' : '/'}${style.image_url}`
+      }));
+      setHairstyles(updatedHairstyles);
     } catch (error) {
       console.error('Error fetching hairstyles:', error);
     } finally {
@@ -25,6 +32,7 @@ const HairstyleGallery = ({ length, onSelect, selectedHairstyle }) => {
     }
   };
 
+ 
   if (!length) {
     return (
       <div className="text-center py-8 text-gray-500">
@@ -52,7 +60,7 @@ const HairstyleGallery = ({ length, onSelect, selectedHairstyle }) => {
             }`}
           >
             <img
-              src={style.image_url}
+              src={style.image_url}  
               alt={style.name}
               className="w-full h-48 object-cover"
             />

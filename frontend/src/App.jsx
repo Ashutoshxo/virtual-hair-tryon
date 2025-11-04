@@ -20,7 +20,7 @@ function App() {
       <div className="max-w-7xl mx-auto">
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-purple-900 mb-2">
-            ✨ Virtual Hair Try-On ✨
+            ✨ Virtual Hair  ✨
           </h1>
           <p className="text-gray-600">
             Upload your photo and try different hairstyles!
