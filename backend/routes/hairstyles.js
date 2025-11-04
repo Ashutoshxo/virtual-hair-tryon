@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 
-// GET hairstyles
+
 router.get('/', async (req, res) => {
   try {
     const { length } = req.query;
@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST hairstyle
+
 router.post('/', async (req, res) => {
   try {
     const { name, length, image_url, color } = req.body;
