@@ -20,6 +20,9 @@ app.use('/api/upload', require('./routes/upload'));
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'Server is running!' });
 });
+app.get("/", (req, res) => {
+  res.send("✅ Backend is live and working!");
+});
 
 const PORT = process.env.PORT || 5000;
 
