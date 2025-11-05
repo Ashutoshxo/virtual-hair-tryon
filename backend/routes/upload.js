@@ -4,7 +4,7 @@ const multer = require('multer');
 const path = require('path');
 const db = require('../config/db');
 
-// Multer config
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads/');
@@ -31,7 +31,7 @@ const upload = multer({
   }
 });
 
-// Upload photo
+
 router.post('/', upload.single('photo'), async (req, res) => {
   try {
     if (!req.file) {
@@ -46,7 +46,7 @@ router.post('/', upload.single('photo'), async (req, res) => {
   }
 });
 
-// Save preview
+
 router.post('/save-preview', async (req, res) => {
   try {
     const { user_photo, hairstyle_id, preview_image } = req.body;

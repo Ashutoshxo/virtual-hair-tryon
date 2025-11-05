@@ -23,6 +23,10 @@ router.get('/', async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 31ee044097a18d1b69df9dd246aab895350c39a2
 router.post('/', async (req, res) => {
   try {
     const { name, length, image_url, color } = req.body;
